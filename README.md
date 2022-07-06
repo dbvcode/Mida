@@ -108,6 +108,36 @@ const myAccount = await login("cTrader", {
 ```
 Read [how to use cTrader](https://www.mida.org/posts/how-to-use-ctrader/) to get the `clientId`, `clientSecret`, `accessToken` and `cTraderBrokerAccountId` credentials.
 
+You can have multiple instances of accounts.
+```javascript
+import { login, } from "@reiryoku/mida";
+
+const myCTraderAccount1 = await login("cTrader", {
+    clientId: "...",
+    clientSecret: "...",
+    accessToken: "...",
+    cTraderBrokerAccountId: "...",
+});
+
+const myCTraderAccount2 = await login("cTrader", {
+    clientId: "...",
+    clientSecret: "...",
+    accessToken: "...",
+    cTraderBrokerAccountId: "...",
+});
+
+const myBinanceAccount = await login("Binance/Spot", {
+    apiKey: "...",
+    apiSecret: "...",
+});
+
+//Example of usage:
+console.log(await myCTraderAccount1.getBalance());
+console.log(await myCTraderAccount2.getBalance());
+console.log(await myBinanceAccount.getBalance());
+```
+
+
 ### Balance, equity and margin
 How to get the account balance, equity and margin.
 ```javascript
